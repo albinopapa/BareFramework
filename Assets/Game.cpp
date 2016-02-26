@@ -32,6 +32,8 @@ Game::Game( HWND hWnd,const KeyboardServer& kServer )
 
 void Game::Go()
 {
+	observer.Update(kbd);
+
 	gfx.BeginFrame();
 	ComposeFrame();
 	gfx.EndFrame();
@@ -39,4 +41,5 @@ void Game::Go()
 
 void Game::ComposeFrame()
 {	
+	observer.Draw(gfx);
 }

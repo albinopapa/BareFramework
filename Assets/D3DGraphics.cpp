@@ -19,6 +19,7 @@
  *	along with The Chili DirectX Framework.  If not, see <http://www.gnu.org/licenses/>.  *
  ******************************************************************************************/
 #include "D3DGraphics.h"
+#include <assert.h>
 
 UINT D3DGraphics::scrWidth = 800;
 UINT D3DGraphics::scrHeight = 600;
@@ -50,7 +51,16 @@ D3DGraphics::~D3DGraphics()
 
 void D3DGraphics::PutPixel( int x,int y,int r,int g,int b )
 {
+	assert(x >= 0 && x < scrWidth);
+	assert(y >= 0 && y < scrHeight);
 	pSysBuffer[x + y * scrWidth] = D3DCOLOR_XRGB(r, g, b);
+}
+
+void D3DGraphics::PutPixel(int x, int y, D3DCOLOR Color)
+{
+	assert(x >= 0 && x < scrWidth);
+	assert(y >= 0 && y < scrHeight);
+	pSysBuffer[x + (y * scrWidth)] = Color;
 }
 
 void D3DGraphics::BeginFrame()
@@ -76,3 +86,42 @@ void D3DGraphics::EndFrame()
 	pBackBuffer->UnlockRect();
 	pDevice->Present( NULL,NULL,NULL,NULL );
 }
+
+void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR Color)
+{
+	StartX = max(0, min(scrWidth, StartX));
+	EndX = max(0, min(scrWidth, EndX));
+	StartY = max(0, min(scrHeight, StartY));
+	EndY = max(0, min(scrHeight, EndY));
+
+	int dx = EndX - StartX;
+	int dy = EndY - StartY;
+
+	float len = sqrt(pow(dx, 2) + pow(dy, 2));
+	float invLen = 1.0f / len;
+	float nx = dx * invLen;
+	float ny = dy * invLen;
+	for (int i = 0; i < len; ++i)
+	{
+		PutPixel(StartX + (nx * i), StartY + (ny * i), Color);
+	}
+}
+
+void D3DGraphics::DrawFilledRect(int Left, int Top, int Right, int Bottom, D3DCOLOR Color)
+{
+	for (int y = Top; y < Bottom; ++y)
+	{
+		DrawLine(Left, y, Right, y, Color);
+	}
+}
+
+void D3DGraphics::DrawRectOutline(int Left, int Top, int Right, int Bottom, D3DCOLOR Color)
+{
+	DrawLine(Left, Top, Right, Top, Color);
+	DrawLine(Left, Bottom, Right, Bottom, Color);
+	DrawLine(Left, Top, Left, Bottom, Color);
+	DrawLine(Right, Top, Right, Bottom, Color);
+}
+
+
+

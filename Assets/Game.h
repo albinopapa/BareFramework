@@ -21,6 +21,7 @@
 #pragma once
 
 #include "D3DGraphics.h"
+#include "Observer.h"
 #include "Keyboard.h"
 
 class Game
@@ -41,6 +42,6 @@ private:
 	/********************************/
 	/*  User Variables              */
 	// TODO: User variables go here
-	
+	Observer observer;
 	/********************************/
 };

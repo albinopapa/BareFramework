@@ -29,8 +29,13 @@ public:
 	D3DGraphics( HWND hWnd );
 	~D3DGraphics();
 	void PutPixel( int x,int y,int r,int g,int b );
+	void PutPixel(int x, int y, D3DCOLOR Color);
 	void BeginFrame();
 	void EndFrame();
+
+	void DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR Color);
+	void DrawFilledRect(int Left, int Top, int Right, int Bottom, D3DCOLOR Color);
+	void DrawRectOutline(int Left, int Top, int Right, int Bottom, D3DCOLOR Color);
 private:
 	Microsoft::WRL::ComPtr<IDirect3D9>			pDirect3D;
 	Microsoft::WRL::ComPtr<IDirect3DDevice9>	pDevice;
