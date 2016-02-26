@@ -22,9 +22,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#define N 100
-
-float var = 0;
 
 Game::Game( HWND hWnd,const KeyboardServer& kServer )
 :	gfx ( hWnd ),
