@@ -23,15 +23,6 @@
 #include "D3DGraphics.h"
 #include "Keyboard.h"
 
-struct Vec2
-{
-	float x, y;
-};
-struct Star
-{
-	Vec2 p;
-};
-
 class Game
 {
 public:
@@ -41,7 +32,6 @@ private:
 	void ComposeFrame();
 	/********************************/
 	/*  User Functions              */
-	void DrawBeam( int x,int z );
 	// TODO: User functions go here
 
 	/********************************/
@@ -50,7 +40,6 @@ private:
 	KeyboardClient kbd;
 	/********************************/
 	/*  User Variables              */
-	Star star[100];
 	// TODO: User variables go here
 	
 	/********************************/
