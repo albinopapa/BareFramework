@@ -87,7 +87,8 @@ void D3DGraphics::EndFrame()
 	pDevice->Present( NULL,NULL,NULL,NULL );
 }
 
-void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR Color)
+void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, 
+	D3DCOLOR Color)
 {
 	StartX = max(0, min(scrWidth, StartX));
 	EndX = max(0, min(scrWidth, EndX));
@@ -107,7 +108,8 @@ void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR 
 	}
 }
 
-void D3DGraphics::DrawFilledRect(int Left, int Top, int Right, int Bottom, D3DCOLOR Color)
+void D3DGraphics::DrawFilledRect(int Left, int Top, int Right, int Bottom, 
+	D3DCOLOR Color)
 {
 	for (int y = Top; y < Bottom; ++y)
 	{
@@ -115,7 +117,8 @@ void D3DGraphics::DrawFilledRect(int Left, int Top, int Right, int Bottom, D3DCO
 	}
 }
 
-void D3DGraphics::DrawRectOutline(int Left, int Top, int Right, int Bottom, D3DCOLOR Color)
+void D3DGraphics::DrawRectOutline(int Left, int Top, int Right, int Bottom,
+	D3DCOLOR Color)
 {
 	DrawLine(Left, Top, Right, Top, Color);
 	DrawLine(Left, Bottom, Right, Bottom, Color);
