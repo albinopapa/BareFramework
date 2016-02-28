@@ -21,7 +21,7 @@
 #include "D3DGraphics.h"
 #include <assert.h>
 
-UINT D3DGraphics::scrWidth = 800;
+UINT D3DGraphics::scrWidth = 600;
 UINT D3DGraphics::scrHeight = 600;
 
 D3DGraphics::D3DGraphics( HWND hWnd )
@@ -90,10 +90,10 @@ void D3DGraphics::EndFrame()
 void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY, 
 	D3DCOLOR Color)
 {
-	StartX = max(0, min(scrWidth, StartX));
-	EndX = max(0, min(scrWidth, EndX));
-	StartY = max(0, min(scrHeight, StartY));
-	EndY = max(0, min(scrHeight, EndY));
+	StartX = max(0, min(scrWidth - 1, StartX));
+	EndX = max(0, min(scrWidth - 1, EndX));
+	StartY = max(0, min(scrHeight - 1, StartY));
+	EndY = max(0, min(scrHeight - 1, EndY));
 
 	int dx = EndX - StartX;
 	int dy = EndY - StartY;
@@ -102,7 +102,8 @@ void D3DGraphics::DrawLine(int StartX, int StartY, int EndX, int EndY,
 	float invLen = 1.0f / len;
 	float nx = dx * invLen;
 	float ny = dy * invLen;
-	for (int i = 0; i < len; ++i)
+
+	for (int i = 0; i <= len; ++i)
 	{
 		PutPixel(StartX + (nx * i), StartY + (ny * i), Color);
 	}

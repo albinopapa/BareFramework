@@ -36,11 +36,12 @@ public:
 	void DrawLine(int StartX, int StartY, int EndX, int EndY, D3DCOLOR Color);
 	void DrawFilledRect(int Left, int Top, int Right, int Bottom, D3DCOLOR Color);
 	void DrawRectOutline(int Left, int Top, int Right, int Bottom, D3DCOLOR Color);
+
+	static UINT scrWidth, scrHeight;
 private:
 	Microsoft::WRL::ComPtr<IDirect3D9>			pDirect3D;
 	Microsoft::WRL::ComPtr<IDirect3DDevice9>	pDevice;
 	Microsoft::WRL::ComPtr<IDirect3DSurface9>	pBackBuffer;
 	D3DLOCKED_RECT		rect;
 	std::unique_ptr<D3DCOLOR[]>					pSysBuffer;
-	static UINT scrWidth, scrHeight;
 };

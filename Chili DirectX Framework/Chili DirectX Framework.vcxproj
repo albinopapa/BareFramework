@@ -87,6 +87,7 @@
     <ClCompile Include="..\Assets\Game.cpp" />
     <ClCompile Include="..\Assets\Keyboard.cpp" />
     <ClCompile Include="..\Assets\Observer.cpp" />
+    <ClCompile Include="..\Assets\RectI.cpp" />
     <ClCompile Include="..\Assets\Timer.cpp" />
     <ClCompile Include="..\Assets\Track.cpp" />
     <ClCompile Include="..\Assets\Windows.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="..\Assets\Game.h" />
     <ClInclude Include="..\Assets\Keyboard.h" />
     <ClInclude Include="..\Assets\Observer.h" />
+    <ClInclude Include="..\Assets\RectI.h" />
     <ClInclude Include="..\Assets\Resource.h" />
     <ClInclude Include="..\Assets\Timer.h" />
     <ClInclude Include="..\Assets\Track.h" />

@@ -94,9 +94,9 @@ int WINAPI wWinMain( HINSTANCE hInst,HINSTANCE,LPWSTR,INT )
 	
 	RECT wr;
 	wr.left = 100;
-	wr.right = 800 + wr.left;
+	wr.right = D3DGraphics::scrWidth + wr.left;
 	wr.top = 100;
-	wr.bottom = 600 + wr.top;
+	wr.bottom = D3DGraphics::scrHeight + wr.top;
 	AdjustWindowRect( &wr,WS_OVERLAPPEDWINDOW,FALSE );
     HWND hWnd = CreateWindowW( L"Chili DirectX Framework Window",L"Chili DirectX Framework",
                               WS_OVERLAPPEDWINDOW,wr.left,wr.top,wr.right-wr.left,wr.bottom-wr.top,
